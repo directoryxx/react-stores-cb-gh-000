@@ -318,7 +318,7 @@ This has a couple of advantages over copying over the "entire" `UserStore` state
 
 1. Performance Improvement
 
-Computers are pretty fast, so unless there is a huge number of users, the performance difference won't be noticeable. Nevertheless, small improvements add up, so not re-rendering the `<Profile />` component whenever **any** user is definitely desirable.
+Computers are pretty fast, so unless there is a huge number of users, the performance difference won't be noticeable. Nevertheless, small improvements add up, so not re-rendering the `<Profile />` component whenever **any** user is updated definitely desirable.
 
 Further more, we could implement a `shouldComponentUpdate` method on the `<Profile />` component:
 
