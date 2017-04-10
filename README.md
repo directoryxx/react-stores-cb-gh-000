@@ -41,7 +41,8 @@ class Store {
   }
 }
 
-module.exports = new Store({});
+const store = new Store({});
+export default store;
 ```
 
 ## Subscribing to stores
@@ -90,13 +91,14 @@ class UserStore {
   }
 }
 
-module.exports = new UserStore([]);
+const userStore = new UserStore([]);
+export default userStore;
 ```
 
 Our profile component now renders the state of the `UserStore` component:
 
 ```js
-const userStore = require('../stores/userStore');
+import userStore '../stores/userStore';
 
 class Profile extends React.Component {
   render () {
