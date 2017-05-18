@@ -55,7 +55,7 @@ Hence we need a way to wire up our components to our global store. In some way, 
 
 An arbitrary number of components can subscribe to state changes that occur in the store. Component's can then react to the  state change by updating their own state and thus triggering a re-render.
 
-But how can component's register themselves at the store?
+But how can components register themselves at the store?
 
 Let's look at an example component for that!
 
