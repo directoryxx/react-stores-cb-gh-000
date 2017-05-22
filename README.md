@@ -49,7 +49,7 @@ export default store;
 
 Of course having a store that simply wraps our state object isn't too useful yet. React components are data-driven. If we update their state using `setState`, React re-evaluates the component's `render` function and updates the rendered DOM structure.
 
-Hence we need a way to wire up our components to our global store. In some way, components need to be able to "listen" for state changes that occur in out store:
+Hence we need a way to wire up our components to our global store. In some way, components need to be able to "listen" for state changes that occur in our store:
 
 ![Flux Store](https://s3.amazonaws.com/learn-verified/react-stores-readme-flux-store.png)
 
