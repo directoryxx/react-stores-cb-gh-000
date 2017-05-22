@@ -20,7 +20,7 @@ In Flux-terms, a store typically has a couple of methods that we're going to go 
 
 ## Stores — singletons by design
 
-Singletons are application-level stores. While there might be a variety of different stores (such as a `UserStore`, `FeedStore`, `MessageStore` etc.), there won't be multiple instances of the same store. Typically this means exporting an individual store object and globally exposing it to all component's that `require` it.
+Stores are application-level singletons. While there might be a variety of different stores (such as a `UserStore`, `FeedStore`, `MessageStore` etc.), there won't be multiple instances of the same store. Typically this means exporting an individual store object and globally exposing it to all component's that `require` it.
 
 This is somewhat analogous to our database metaphors: We might store different "kinds" of data that we store in different databases (e.g. we might store unstructured data in MongoDB and relational data in something like PostgreSQL), but all clients share the "same" database. Each application node has access to the same data.
 
@@ -41,20 +41,21 @@ class Store {
   }
 }
 
-module.exports = new Store({});
+const store = new Store({});
+export default store;
 ```
 
 ## Subscribing to stores
 
 Of course having a store that simply wraps our state object isn't too useful yet. React components are data-driven. If we update their state using `setState`, React re-evaluates the component's `render` function and updates the rendered DOM structure.
 
-Hence we need a way to wire up our components to our global store. In some way, components need to be able to "listen" for state changes that occur in out store:
+Hence we need a way to wire up our components to our global store. In some way, components need to be able to "listen" for state changes that occur in our store:
 
 ![Flux Store](https://s3.amazonaws.com/learn-verified/react-stores-readme-flux-store.png)
 
-An arbitrary number of components can subscribe to state changes that occur in the store. Component's can then react to the  state change by updating their own state and thus triggering a re-render.
+An arbitrary number of components can subscribe to state changes that occur in the store. Components can then react to the  state change by updating their own state and thus triggering a re-render.
 
-But how can component's register themselves at the store?
+But how can components register themselves at the store?
 
 Let's look at an example component for that!
 
@@ -90,13 +91,14 @@ class UserStore {
   }
 }
 
-module.exports = new UserStore([]);
+const userStore = new UserStore([]);
+export default userStore;
 ```
 
 Our profile component now renders the state of the `UserStore` component:
 
 ```js
-const userStore = require('../stores/userStore');
+import userStore '../stores/userStore';
 
 class Profile extends React.Component {
   render () {
