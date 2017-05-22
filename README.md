@@ -53,7 +53,7 @@ Hence we need a way to wire up our components to our global store. In some way, 
 
 ![Flux Store](https://s3.amazonaws.com/learn-verified/react-stores-readme-flux-store.png)
 
-An arbitrary number of components can subscribe to state changes that occur in the store. Component's can then react to the  state change by updating their own state and thus triggering a re-render.
+An arbitrary number of components can subscribe to state changes that occur in the store. Components can then react to the  state change by updating their own state and thus triggering a re-render.
 
 But how can components register themselves at the store?
 
